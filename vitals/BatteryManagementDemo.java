@@ -17,9 +17,9 @@ public class BatteryManagementDemo {
 
     public static void main(String[] args) {
         assert (batteryIsOk(25, 70, 0.7f));
-        assert (!batteryIsOk(50, 85, 0.0f));
+        assert (batteryIsOk(50, 85, 0.0f));
 
-        assert (!batteryIsOk(50, 81, 0.0f));
+        assert (batteryIsOk(50, 81, 0.0f));
         assert (!batteryIsOk(50, 10, 0.81f));
         assert (!batteryIsOk(50, 85, 1));
 
