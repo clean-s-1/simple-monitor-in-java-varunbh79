@@ -2,7 +2,7 @@ package vitals;
 
 import java.util.List;
 
-public class BatteryManagementSystemDemo {
+public class BatteryManagementDemo {
 
     static boolean batteryIsOk(float temperature, float soc, float chargeRate) {
        IBatteryStateValidator temperatureValidator = new BatteryTemperatureValidator(temperature);
