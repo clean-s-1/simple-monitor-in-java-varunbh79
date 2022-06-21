@@ -1,5 +1,6 @@
 package vitals;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class BatteryManagementDemo {
@@ -8,7 +9,7 @@ public class BatteryManagementDemo {
        IBatteryStateValidator temperatureValidator = new BatteryTemperatureValidator(temperature);
        IBatteryStateValidator socValidator = new BatterySOCValidator(soc);
        IBatteryStateValidator chargeRateValidator = new BatteryChargeRateValidator(chargeRate);
-       List<IBatteryStateValidator> batteryStateValidators = List.of(temperatureValidator,socValidator,chargeRateValidator);
+       List<IBatteryStateValidator> batteryStateValidators = Arrays.asList(temperatureValidator,socValidator,chargeRateValidator);
        BatteryStatusValidator batteryStatusValidator = new BatteryStatusValidator(batteryStateValidators);
        return batteryStatusValidator.validateBatteryStatus();
     }
