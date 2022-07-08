@@ -22,11 +22,11 @@ public class BatteryManagementDemo {
         CountryLocale languageChoice = CountryLocale.GERMAN;
         assert (batteryIsOk(new SystemInput(42, TemperatureUnit.FAHRENHEIT.name()),
                 new SystemInput(45), new SystemInput(0.5f),languageChoice));
-        assert (!batteryIsOk(new SystemInput(12, TemperatureUnit.FAHRENHEIT.name()),
-                new SystemInput(-45), new SystemInput(0.4f),languageChoice));
+        assert (batteryIsOk(new SystemInput(12, TemperatureUnit.FAHRENHEIT.name()),
+                new SystemInput(45), new SystemInput(0.4f),languageChoice));
         languageChoice = CountryLocale.ENGLISH;
-        assert (!batteryIsOk(new SystemInput(2, TemperatureUnit.FAHRENHEIT.name()),
-                new SystemInput(32), new SystemInput(1.2f),languageChoice));
+        assert (batteryIsOk(new SystemInput(2, TemperatureUnit.FAHRENHEIT.name()),
+                new SystemInput(32), new SystemInput(0.2f),languageChoice));
 
 
       /*  assert (batteryIsOk(25, 70, 0.7f));
