@@ -3,17 +3,16 @@ package vitals;
 public class BatteryChargeRateValidator implements IBatteryStateValidator{
 
     private final float chargeRate;
+    private final CountryLocale countryLocale;
 
-    public BatteryChargeRateValidator(float chargeRate) {
+    public BatteryChargeRateValidator(float chargeRate,CountryLocale countryLocale) {
         this.chargeRate = chargeRate;
+        this.countryLocale = countryLocale;
     }
 
     @Override
     public boolean validateBatteryState() {
-        if(this.chargeRate > 0.8) {
-            System.out.println("Charge Rate is out of range!");
-            return false;
-        }
-        return true;
+
+        return BoundaryLimit.getBatteryStatusBasedOnSystemInput("chargeRate",chargeRate,countryLocale);
     }
 }

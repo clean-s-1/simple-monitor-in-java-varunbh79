@@ -1,18 +1,20 @@
 package vitals;
 
+
 public class BatterySOCValidator implements IBatteryStateValidator{
 
     private final float soc;
+    private final CountryLocale countryLocale;
 
-    public BatterySOCValidator(float soc) {
+
+    public BatterySOCValidator(float soc,CountryLocale countryLocale) {
         this.soc = soc;
+        this.countryLocale = countryLocale;
     }
+
     @Override
     public boolean validateBatteryState() {
-         if(this.soc < 20 || this.soc > 80) {
-            System.out.println("State of Charge is out of range!");
-            return false;
-        }
-       return true;
+
+       return BoundaryLimit.getBatteryStatusBasedOnSystemInput("soc",soc,countryLocale);
     }
 }

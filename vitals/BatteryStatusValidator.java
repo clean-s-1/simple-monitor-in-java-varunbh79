@@ -12,10 +12,13 @@ public class BatteryStatusValidator {
 
     public boolean validateBatteryStatus() {
 
-        boolean result = true;
+        boolean finalResult = true;
         for(IBatteryStateValidator batteryStateValidator: batteryStateValidators) {
-            result = batteryStateValidator.validateBatteryState();
+            boolean stageResult = batteryStateValidator.validateBatteryState();
+            finalResult =  finalResult && stageResult;
         }
-        return result;
+        return finalResult;
     }
+
+
 }

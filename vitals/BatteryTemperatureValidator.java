@@ -2,19 +2,28 @@ package vitals;
 
 public class BatteryTemperatureValidator implements IBatteryStateValidator{
 
-    private final float temperature;
+    private  float temperature;
+    private final String metricUnit;
+    private final CountryLocale countryLocale;
 
-    public BatteryTemperatureValidator(float temperature) {
+
+    public BatteryTemperatureValidator(float temperature, String metricUnit, CountryLocale countryLocale) {
         this.temperature = temperature;
+        this.metricUnit = metricUnit;
+        this.countryLocale = countryLocale;
     }
 
+    @Override
+    public float computeTemperatureData(float temperature) {
+     if (this.metricUnit.equals(TemperatureUnit.CELSIUS.name())) {
+            this.temperature = (temperature * 9 / 5) + 32;
+        }
+       return this.temperature;
+    }
 
     @Override
     public boolean validateBatteryState() {
-        if(this.temperature < 0 || this.temperature > 45) {
-            System.out.println("Temperature is out of range!");
-            return false;
-        }
-        return true;
+        this.temperature = computeTemperatureData(this.temperature);
+        return   BoundaryLimit.getBatteryStatusBasedOnSystemInput("temp",this.temperature,countryLocale);
     }
 }
