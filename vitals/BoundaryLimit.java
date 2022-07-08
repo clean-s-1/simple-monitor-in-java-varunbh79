@@ -38,19 +38,33 @@ public class BoundaryLimit {
 
     }
 
+
+
     public static boolean getBatteryStatusBasedOnSystemInput(String inputType, Float inputValue,CountryLocale languageChoice){
 
         String msgResult = null;
         boolean batteryStatus = false;
         Float minVal = boundaryConditions.get(inputType).lowerKey(inputValue);
         Float maxVal = boundaryConditions.get(inputType).higherKey(inputValue);
-        if(maxVal == null) {
+        /*if(maxVal == null) {
             msgResult = boundaryConditions.get(inputType).lastEntry().getValue();
         } else if(minVal == null) {
             msgResult = boundaryConditions.get(inputType).firstEntry().getValue();
         } else if(inputValue > minVal && inputValue < maxVal) {
             msgResult = boundaryConditions.get(inputType).get(minVal);
             batteryStatus = true;
+        }*/
+        if(minVal != null && maxVal != null) {
+            if (inputValue > minVal && inputValue < maxVal) {
+                msgResult = boundaryConditions.get(inputType).get(minVal);
+                batteryStatus = true;
+            }
+        } else  {
+            if(maxVal == null) {
+                msgResult = boundaryConditions.get(inputType).lastEntry().getValue();
+            } else  {
+                msgResult = boundaryConditions.get(inputType).firstEntry().getValue();
+            }
         }
         print(msgResult,languageChoice);
         return batteryStatus;
