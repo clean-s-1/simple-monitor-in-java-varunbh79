@@ -50,11 +50,8 @@ public class BoundaryLimit {
                 msgResult = boundaryConditions.get(inputType).get(minVal);
                 batteryStatus = true;
         } else {
-            if(minVal == 0) {
-                msgResult = boundaryConditions.get(inputType).firstEntry().getValue();
-            } else if(maxVal == 100) {
-                msgResult = boundaryConditions.get(inputType).lastEntry().getValue();
-            }
+            msgResult = minVal == 0 ? boundaryConditions.get(inputType).firstEntry().getValue():
+                    boundaryConditions.get(inputType).lastEntry().getValue();
         }
 
         print(msgResult,languageChoice);
