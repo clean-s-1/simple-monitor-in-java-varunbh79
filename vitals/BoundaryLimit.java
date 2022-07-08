@@ -44,16 +44,12 @@ public class BoundaryLimit {
 
         String msgResult = null;
         boolean batteryStatus = false;
-        float minVal = boundaryConditions.get(inputType).lowerKey(inputValue)!= null ? boundaryConditions.get(inputType).lowerKey(inputValue):0f;
-        float maxVal = boundaryConditions.get(inputType).higherKey(inputValue)!= null ? boundaryConditions.get(inputType).higherKey(inputValue):100f;
+        float minVal = boundaryConditions.get(inputType).lowerKey(inputValue);
+        float maxVal = boundaryConditions.get(inputType).higherKey(inputValue);
         if (inputValue > minVal && inputValue < maxVal) {
                 msgResult = boundaryConditions.get(inputType).get(minVal);
                 batteryStatus = true;
-        } else {
-            msgResult = minVal == 0 ? boundaryConditions.get(inputType).firstEntry().getValue():
-                    boundaryConditions.get(inputType).lastEntry().getValue();
         }
-
         print(msgResult,languageChoice);
         return batteryStatus;
     }
