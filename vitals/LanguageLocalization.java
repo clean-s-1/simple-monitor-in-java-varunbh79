@@ -12,11 +12,11 @@ public class LanguageLocalization {
         Map<String,String> statusIndicatorMapInEnglish= new ConcurrentHashMap<>();
         Map<String,String> statusIndicatorMapInGerman = new ConcurrentHashMap<>();
         
-        statusIndicatorMapInEnglish.put("LOW_SOC_BREACH", "BREACH::: ====>  Charge State is out of range!");
-        statusIndicatorMapInEnglish.put("LOW_SOC_WARNING", "WARNING::: ====> Charge State approaching Discharge Mode!");
-        statusIndicatorMapInEnglish.put("NORMAL_SOC", "NORMAL::: ====>  Charge State is in range!");
-        statusIndicatorMapInEnglish.put("HIGH_SOC_WARNING", "WARNING::: ====>  Charge State is approaching peak-charge Mode !");
-        statusIndicatorMapInEnglish.put("HIGH_SOC_BREACH", "BREACH::: ====>  Charge State is out of range!");
+        statusIndicatorMapInEnglish.put("LOW_SOC_BREACH", "BREACH::: ====> State of Charge is out of range!");
+        statusIndicatorMapInEnglish.put("LOW_SOC_WARNING", "WARNING::: ====>  State of Charge approaching Discharge Mode!");
+        statusIndicatorMapInEnglish.put("NORMAL_SOC", "NORMAL::: ====> State of Charge is in range!");
+        statusIndicatorMapInEnglish.put("HIGH_SOC_WARNING", "WARNING::: ====>  State of Charge is approaching peak-charge Mode !");
+        statusIndicatorMapInEnglish.put("HIGH_SOC_BREACH", "BREACH::: ====> State of Charge is out of range!");
         statusIndicatorMapInEnglish.put("LOW_TEMP_BREACH", "BREACH::: ====> Temperature  is out of range!");
         statusIndicatorMapInEnglish.put("LOW_TEMP_WARNING", "WARNING::: ====> Temperature  is approaching for breach!");
         statusIndicatorMapInEnglish.put("NORMAL_TEMP", "NORMAL::: ====> Temperature  is in of range!");

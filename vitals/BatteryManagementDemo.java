@@ -27,6 +27,8 @@ public class BatteryManagementDemo {
         languageChoice = CountryLocale.ENGLISH;
         assert (batteryIsOk(new SystemInput(2, TemperatureUnit.FAHRENHEIT.name()),
                 new SystemInput(32), new SystemInput(0.2f),languageChoice));
+        assert (!batteryIsOk(new SystemInput(-100, TemperatureUnit.CELSIUS.name()),
+                new SystemInput(3200), new SystemInput(10.2f),languageChoice));
 
 
       /*  assert (batteryIsOk(25, 70, 0.7f));
