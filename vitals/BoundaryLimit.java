@@ -44,8 +44,8 @@ public class BoundaryLimit {
 
         String msgResult = null;
         boolean batteryStatus = false;
-        Float minVal = boundaryConditions.get(inputType).lowerKey(inputValue)!= null ? boundaryConditions.get(inputType).lowerKey(inputValue):0;
-        Float maxVal = boundaryConditions.get(inputType).higherKey(inputValue)!= null ? boundaryConditions.get(inputType).higherKey(inputValue):100;
+        float minVal = boundaryConditions.get(inputType).lowerKey(inputValue)!= null ? boundaryConditions.get(inputType).lowerKey(inputValue):0f;
+        float maxVal = boundaryConditions.get(inputType).higherKey(inputValue)!= null ? boundaryConditions.get(inputType).higherKey(inputValue):100f;
         if (inputValue > minVal && inputValue < maxVal) {
                 msgResult = boundaryConditions.get(inputType).get(minVal);
                 batteryStatus = true;
@@ -65,5 +65,6 @@ public class BoundaryLimit {
         String msgResult = LanguageLocalization.getMessageBasedOnLanguageChoice(msgKey,languageChoice);
         System.out.println(msgKey + ">>>" + msgResult);
     }
+
 
 }
