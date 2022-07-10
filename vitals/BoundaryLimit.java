@@ -36,16 +36,15 @@ public class BoundaryLimit {
 
     }
 
-    private static boolean verifyBoundaryLimit(float input,Float minVal,Float maxVal) {
+    private static boolean verifyBoundaryLimit(float input,float minVal,float maxVal) {
         return input > minVal && input < maxVal;
     }
 
-    private static String returnLimitBreachMsg(Float minVal,Float maxVal,String inputType) {
-        if (maxVal == null) {
-            return boundaryConditions.get(inputType).lastEntry().getValue();
-        } else {
-            return boundaryConditions.get(inputType).firstEntry().getValue();
-        }
+    private static String returnLimitBreachMsg(float inputVal,String inputType) {
+      return  boundaryConditions.get(inputType).lowerKey(inputVal) != null ?
+              boundaryConditions.get(inputType).lowerEntry(inputVal).getValue()
+              :boundaryConditions.get(inputType).higherEntry(inputVal).getValue();
+
     }
 
 
@@ -53,13 +52,13 @@ public class BoundaryLimit {
 
         String statusMsg = null;
         boolean batteryStatus = false;
-        Float minVal = boundaryConditions.get(inputType).lowerKey(inputValue);
-        Float maxVal = boundaryConditions.get(inputType).higherKey(inputValue);
+        Float minVal = boundaryConditions.get(inputType).firstKey();
+        Float maxVal = boundaryConditions.get(inputType).lastKey();
         if(verifyBoundaryLimit(inputValue,minVal,maxVal)) {
-            statusMsg = boundaryConditions.get(inputType).get(minVal);
+            statusMsg = boundaryConditions.get(inputType).lowerEntry(inputValue).getValue();
             batteryStatus = true;
         } else {
-            statusMsg = returnLimitBreachMsg(minVal,maxVal,inputType);
+            statusMsg = returnLimitBreachMsg(inputValue,inputType);
         }
         print(statusMsg,languageChoice);
         return batteryStatus;
