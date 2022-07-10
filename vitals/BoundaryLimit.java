@@ -1,9 +1,7 @@
 package vitals;
 
 
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class BoundaryLimit {
 
@@ -38,18 +36,16 @@ public class BoundaryLimit {
 
     }
 
-    private static boolean verifyBoundaryLimit(float input,float minVal,float maxVal) {
+    private static boolean verifyBoundaryLimit(float input,Float minVal,Float maxVal) {
         return input > minVal && input < maxVal;
     }
 
-    private static String setLimitBreachMsg(float minVal,float maxVal,String inputType) {
-        String limitBreachMsg = null;
-        if(maxVal == 100) {
-            limitBreachMsg = boundaryConditions.get(inputType).lastEntry().getValue();
+    private static String returnLimitBreachMsg(Float minVal,Float maxVal,String inputType) {
+        if (maxVal == null) {
+            return boundaryConditions.get(inputType).lastEntry().getValue();
         } else {
-            limitBreachMsg = boundaryConditions.get(inputType).firstEntry().getValue();
+            return boundaryConditions.get(inputType).firstEntry().getValue();
         }
-        return limitBreachMsg;
     }
 
 
@@ -57,22 +53,23 @@ public class BoundaryLimit {
 
         String statusMsg = null;
         boolean batteryStatus = false;
-        float minVal = boundaryConditions.get(inputType).lowerKey(inputValue)!=null ? boundaryConditions.get(inputType).lowerKey(inputValue) : 0;
-        float maxVal = boundaryConditions.get(inputType).higherKey(inputValue)!=null ? boundaryConditions.get(inputType).higherKey(inputValue) : 100;
+        Float minVal = boundaryConditions.get(inputType).lowerKey(inputValue);
+        Float maxVal = boundaryConditions.get(inputType).higherKey(inputValue);
         if(verifyBoundaryLimit(inputValue,minVal,maxVal)) {
             statusMsg = boundaryConditions.get(inputType).get(minVal);
             batteryStatus = true;
         } else {
-           statusMsg = setLimitBreachMsg(minVal,maxVal,inputType);
+            statusMsg = returnLimitBreachMsg(minVal,maxVal,inputType);
         }
         print(statusMsg,languageChoice);
         return batteryStatus;
     }
 
-    public static void print(String msgKey,CountryLocale languageChoice) {
+    private static void print(String msgKey,CountryLocale languageChoice) {
         String msgResult = LanguageLocalization.getMessageBasedOnLanguageChoice(msgKey,languageChoice);
         System.out.println(msgKey + ">>>" + msgResult);
     }
+
 
 
 }
