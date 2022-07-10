@@ -1,7 +1,9 @@
 package vitals;
 
 
-import java.util.*;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 public class BoundaryLimit {
 
@@ -44,7 +46,6 @@ public class BoundaryLimit {
       return  boundaryConditions.get(inputType).lowerKey(inputVal) != null ?
               boundaryConditions.get(inputType).lowerEntry(inputVal).getValue()
               :boundaryConditions.get(inputType).higherEntry(inputVal).getValue();
-
     }
 
 
