@@ -1,3 +1,11 @@
+
+Provided Implementation of all 3 scenarios
+
+1.data-structure with a series of numbers representing the boundary of each condition
+2. Language Localization
+3. Accept input in different units
+
+
 # Programming Paradigms
 
 Electric Vehicles have BMS - Battery Management Systems
